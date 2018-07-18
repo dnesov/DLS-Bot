@@ -1,5 +1,8 @@
-ownerTag =
-clientToken =
-prefix = +
-suggestions =
-suggestionsSubmit =
+ownerTag = 
+clientToken = 
+activity = 
+prefix = 
+suggestions = 
+suggestionsSubmit = 
+questions = 
+questionsSubmit = 

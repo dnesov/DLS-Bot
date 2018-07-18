@@ -17,7 +17,7 @@ const config = configFile
 bot.on('ready', () => {
   console.log(`Logged in as ${bot.user.tag}!`);
   bot.user.setStatus("online")
-  bot.user.setActivity("Viewing your suggestions... | use +suggest to suggest one!")
+  bot.user.setActivity(config.activity)
 });
 
 bot.on('message', message => {
@@ -42,6 +42,19 @@ bot.on('message', message => {
             });
         } else {
             message.channel.send("Sorry, you can suggest only on a specific channel.")
+        }
+        break;
+
+        case "ask":
+        if((args.length > 1) && (message.channel.id == config.questionsSubmit)) {
+            args.shift()
+            var question = args.join(" ")
+            message.author.send(" Your question ``" +suggestion+"`` has been submitted to #questions for staff.")
+            var author = message.author.id
+            message.delete()
+            bot.channels.get(config.questions).send("``"+question+"``"+" Asked by: <@"+ author+">")
+        } else {
+            message.channel.send("Sorry, you can ask only on a specific channel.")
         }
         break;
 
