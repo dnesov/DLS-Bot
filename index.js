@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const bot = new Discord.Client();
 const fs = require('fs');
 const prefix = "+"
-const dnesov = "dnesov.js#9358"
+const owner = "insert your discord tag here"
 
 bot.on('ready', () => {
   console.log(`Logged in as ${bot.user.tag}!`);
@@ -42,4 +42,4 @@ bot.on('message', message => {
     }  
 });
 
-bot.login('NDY4ODE0NTU0MTc3MjA4MzMw.Di-pVA.xB7GyZP98t9VhAIjufD_0VAQDyE');
+bot.login('Insert your bot token here.');
