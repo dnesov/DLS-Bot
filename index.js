@@ -1,13 +1,23 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client();
 const fs = require('fs');
-const prefix = "+"
-const owner = "insert your discord tag here"
-
+const os = require('os')
+const configFile = fs.readFileSync('config.txt', 'utf8');
+const config = configFile
+  .split(os.EOL)
+  .map(line => line.split('='))
+  .reduce((acc, val) => {
+    const configName = val[0].trim()
+    const configValue = val[1].trim()
+    acc[configName] = configValue
+    return acc
+  }, {})
+  const owner = config.ownerTag
+  const prefix = config.prefix
 bot.on('ready', () => {
   console.log(`Logged in as ${bot.user.tag}!`);
   bot.user.setStatus("online")
-  bot.user.setGame("Viewing your suggestions... | use +suggest to suggest one!")
+  bot.user.setActivity("Viewing your suggestions... | use +suggest to suggest one!")
 });
 
 bot.on('message', message => {
@@ -19,13 +29,13 @@ bot.on('message', message => {
         break;
 
         case "suggest":
-        if((args.length > 1) && (message.channel.id == "468827218248859660")) {
+        if((args.length > 1) && (message.channel.id == config.suggestionsSubmit)) {
             args.shift()
             var suggestion = args.join(" ")
             message.author.send(" Your suggestion ``" +suggestion+"`` has been submitted to #suggestions to vote.")
             var author = message.author.id
             message.delete()
-            bot.channels.get("459332614155927552").send("``"+suggestion+"``"+" Submitted by: <@"+ author+">").then ((suggestionMessage) => {
+            bot.channels.get(config.suggestions).send("``"+suggestion+"``"+" Submitted by: <@"+ author+">").then ((suggestionMessage) => {
                 suggestionMessage.react("✅")
                 suggestionMessage.react("❌")
                 return;
@@ -42,4 +52,4 @@ bot.on('message', message => {
     }  
 });
 
-bot.login('Insert your bot token here.');
+bot.login(config.clientToken);
