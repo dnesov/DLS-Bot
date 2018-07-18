@@ -49,7 +49,7 @@ bot.on('message', message => {
         if((args.length > 1) && (message.channel.id == config.questionsSubmit)) {
             args.shift()
             var question = args.join(" ")
-            message.author.send(" Your question ``" +suggestion+"`` has been submitted to #questions for staff.")
+            message.author.send(" Your question ``" +question+"`` has been submitted to #questions for staff.")
             var author = message.author.id
             message.delete()
             bot.channels.get(config.questions).send("``"+question+"``"+" Asked by: <@"+ author+">")
