@@ -15,7 +15,7 @@ const config = configFile
   const owner = config.ownerTag
   const prefix = config.prefix
 bot.on('ready', () => {
-  console.log(`Logged in as ${bot.user.tag}!`);
+  console.log(`Logged in as ${bot.user.tag`);
   bot.user.setStatus("online")
   bot.user.setActivity(config.activity)
 });
