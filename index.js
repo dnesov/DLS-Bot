@@ -24,8 +24,8 @@ bot.on('message', message => {
     var args = message.content.substring(prefix.length).split(" ")
 
     switch (args[0]) {
-        case "ping":
-        message.channel.send("Pong!");
+        case "status":
+        message.channel.send("Don't be afraid that i'm gone -- i'm alright! By the way, Pong! :ping_pong:");
         break;
 
         case "suggest":
