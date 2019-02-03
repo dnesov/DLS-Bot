@@ -15,7 +15,7 @@ const config = configFile
   const owner = config.ownerTag
   const prefix = config.prefix
 bot.on('ready', () => {
-  console.log(`Logged in as ${bot.user.tag}!`);
+  console.log(`Zalogowano jako ${bot.user.tag}! Autor: dnesov; Polska wersja bota: kotyk`);
   bot.user.setStatus("online")
   bot.user.setActivity(config.activity)
 });
@@ -28,7 +28,7 @@ bot.on('message', message => {
         message.channel.send("Odpowiadam, jak zawsze na naszych falach!");
         break;
 
-        case "sugestia":
+        case "sugestie":
         if((args.length > 1) && (message.channel.id == config.suggestionsSubmit)) {
             args.shift()
             var suggestion = args.join(" ")
@@ -59,7 +59,7 @@ bot.on('message', message => {
         break;
 
         case "info":
-        message.channel.send("**Cześć!**\n Jak widzisz, przerobiliśmy cały system propozycji. Od teraz by dodać sugestie na temat serwera, wpisz >sugestia <treść>.\nBy zapytać o coś, po prostu napisz >pytanie <treść>")
+        message.channel.send("**Cześć!**\n Jak widzisz, przerobiliśmy cały system propozycji. Od teraz by dodać sugestie na temat serwera, wpisz -configureme <treść>.\nBy zapytać o coś, po prostu napisz -configureme <treść>")
         break;
         
     }  

@@ -15,7 +15,7 @@ const config = configFile
   const owner = config.ownerTag
   const prefix = config.prefix
 bot.on('ready', () => {
-  console.log(`Logged in as ${bot.user.tag`);
+  console.log(`Logged in as ${bot.user.tag}!`);
   bot.user.setStatus("online")
   bot.user.setActivity(config.activity)
 });
@@ -32,7 +32,7 @@ bot.on('message', message => {
         if((args.length > 1) && (message.channel.id == config.suggestionsSubmit)) {
             args.shift()
             var suggestion = args.join(" ")
-            message.author.send(" Your suggestion ``" +suggestion+"`` has been submitted to #suggestions to vote.")
+            message.author.send(" Your suggestion ``" +suggestion+"`` has been submitted to #configure-in-index.js to vote.")
             var author = message.author.id
             message.delete()
             bot.channels.get(config.suggestions).send("``"+suggestion+"``"+" Submitted by: <@"+ author+">").then ((suggestionMessage) => {
