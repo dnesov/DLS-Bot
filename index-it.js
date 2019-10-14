@@ -25,23 +25,23 @@ bot.on('message', message => {
 
     switch (args[0]) {
         case "status":
-        message.channel.send("Don't be afraid that i'm gone -- i'm alright! By the way, Pong! :ping_pong:");
+        message.channel.send("Non aver paura che me ne sia andato - sto bene! A proposito, Pong! :ping_pong:");
         break;
 
         case "suggest":
         if((args.length > 1) && (message.channel.id == config.suggestionsSubmit)) {
             args.shift()
             var suggestion = args.join(" ")
-            message.author.send(" Your suggestion ``" +suggestion+"`` has been submitted to #configure-in-index.js to vote.")
+            message.author.send(" Il tuo suggerimento ``" +suggestion+"`` è stato presentato a #configure-in-index.js votare.")
             var author = message.author.id
             message.delete()
-            bot.channels.get(config.suggestions).send("``"+suggestion+"``"+" Submitted by: <@"+ author+">").then ((suggestionMessage) => {
+            bot.channels.get(config.suggestions).send("``"+suggestion+"``"+" Inserito di: <@"+ author+">").then ((suggestionMessage) => {
                 suggestionMessage.react("✅")
                 suggestionMessage.react("❌")
                 return;
             });
         } else {
-            message.channel.send("Sorry, you can suggest only on a specific channel.")
+            message.channel.send("Spiacenti, puoi suggerire solo su un canale specifico.")
         }
         break;
 
@@ -49,17 +49,17 @@ bot.on('message', message => {
         if((args.length > 1) && (message.channel.id == config.questionsSubmit)) {
             args.shift()
             var question = args.join(" ")
-            message.author.send(" Your question ``" +question+"`` has been submitted to #questions for staff.")
+            message.author.send(" La tua domanda ``" +question+"`` è stato inviato a #questions per il personale.")
             var author = message.author.id
             message.delete()
-            bot.channels.get(config.questions).send("``"+question+"``"+" Asked by: <@"+ author+">")
+            bot.channels.get(config.questions).send("``"+question+"``"+" Chiesto da: <@"+ author+">")
         } else {
-            message.channel.send("Sorry, you can ask only on a specific channel.")
+            message.channel.send("Spiacenti, puoi chiedere solo su un canale specifico.")
         }
         break;
 
         case "send_suggestions_info":
-        message.channel.send("**HELLO THERE!**\n We have reworked the suggestions system. Now, use the <#468827218248859660> channel, and type ?suggest ``your suggestion``. in order to submit your own!\n Make sure you didn't make any typos, we don't like grammatical errors.\n Good luck!")
+        message.channel.send("**CIAO!**\n Abbiamo rielaborato il sistema dei suggerimenti. Ora, usa il <#468827218248859660> canale e digitare ?suggest ``il tuo suggerimento``. per presentare il tuo!\n Assicurati di non aver commesso errori di battitura, non ci piacciono gli errori grammaticali.\n In bocca al lupo!")
         break;
         
     }  
